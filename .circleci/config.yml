@@ -19,7 +19,7 @@ workflows:
           filters:
             branches:
               ignore: /.*/
-              tags:
+            tags:
               only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
           type: approval
       - orb-tools/dev-promote-prod-from-git-tag:
@@ -27,8 +27,8 @@ workflows:
           filters:
             branches:
               ignore: /.*/
-              tags:
-                only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
+            tags:
+              only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
           orb-name: coryzibell/cloudflare-wrangler
           requires:
             - hold-for-approval
