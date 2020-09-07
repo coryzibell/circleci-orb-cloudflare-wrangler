@@ -18,10 +18,6 @@ workflows:
           filters:
             branches:
               only: develop
-      - orb-tools/spellcheck:
-          filters:
-            branches:
-              only: develop
       - orb-tools/pack:
           filters:
             branches:
@@ -33,5 +29,4 @@ workflows:
           orb-name: coryzibell/cloudflare-wrangler
           requires:
             - orb-tools/lint
-            - orb-tools/shellcheck
             - orb-tools/pack
