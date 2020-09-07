@@ -4,7 +4,6 @@ description: >
 parameters:
   environment:
     type: string
-    default: ""
     description: >
       The environment to publish the site under. Will be passed to wrangler as --env.
       Needs to be specified in wrangler.toml
