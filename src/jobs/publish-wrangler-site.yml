@@ -6,6 +6,7 @@ executor: node/default
 parameters:
   environment:
     type: string
+    default: ""
     description: >
       The custom environment to pass to wrangler (which will be picked up in wrangler.toml
   checkout:
