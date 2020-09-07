@@ -14,8 +14,8 @@ workflows:
           orb-name: coryzibell/cloudflare-wrangler
   pack:
     jobs:
-      - orb-tools/lint:
-      - orb-tools/pack:
+      - orb-tools/lint
+      - orb-tools/pack
       - orb-tools/publish-dev:
           orb-name: coryzibell/cloudflare-wrangler
           alpha-version-ref: dev:<< pipeline.git.branch >>
