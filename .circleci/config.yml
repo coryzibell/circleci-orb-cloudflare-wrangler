@@ -4,14 +4,14 @@ orbs:
 workflows:
   deploy:
     jobs:
-      - orb-tools/dev-promote-prod-from-commit-subject:
+      - orb-tools/dev-promote-prod-from-git-tag:
           add-pr-comment: false
-          fail-if-semver-not-indicated: true
           filters:
             branches:
-              only: master
+              ignore: /.*/
+            tags:
+              only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
           orb-name: coryzibell/cloudflare-wrangler
-          publish-version-tag: false
   pack:
     jobs:
       - orb-tools/lint:
