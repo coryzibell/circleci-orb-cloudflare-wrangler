@@ -21,8 +21,8 @@ steps:
             name: Install wrangler
             command: |
               yarn global add @cloudflare/wrangler
-        - publish site:
-            name: Install wrangler
+        - run:
+            name: Publish site
             command: |
               wrangler publish
   - unless:
@@ -37,7 +37,7 @@ steps:
             name: Install wrangler
             command: |
               yarn global add @cloudflare/wrangler
-        - publish site:
-            name: Install wrangler
+        - run:
+            name: Publish Site
             command: |
               wrangler publish --env << parameters.environment >>
