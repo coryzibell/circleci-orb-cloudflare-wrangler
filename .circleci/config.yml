@@ -18,7 +18,7 @@ workflows:
           filters:
             branches:
               only: develop
-      - orb-tools/shellcheck:
+      - orb-tools/spellcheck:
           filters:
             branches:
               only: develop
