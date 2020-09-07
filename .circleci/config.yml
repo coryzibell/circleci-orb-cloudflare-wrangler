@@ -16,7 +16,8 @@ workflows:
           add-pr-comment: false
           filters:
             branches:
-              ignore: /.*/
+              only:
+                - master
             tags:
               only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
           orb-name: coryzibell/cloudflare-wrangler
