@@ -16,12 +16,12 @@ workflows:
   publish:
     jobs:
       - hold-for-approval:
-        filters:
-          branches:
-            ignore: /.*/
-            tags:
+          filters:
+            branches:
+              ignore: /.*/
+              tags:
               only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
-        type: approval
+          type: approval
       - orb-tools/dev-promote-prod-from-git-tag:
           add-pr-comment: false
           filters:
