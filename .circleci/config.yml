@@ -2,7 +2,7 @@ version: '2.1'
 orbs:
   orb-tools: circleci/orb-tools@10
 workflows:
-  pack_deploy:
+  pack_build:
     jobs:
       - orb-tools/lint
       - orb-tools/pack
@@ -12,15 +12,23 @@ workflows:
           requires:
             - orb-tools/lint
             - orb-tools/pack
+
+  publish:
+    jobs:
+      - hold-for-approval:
+        filters:
+          branches:
+            ignore: /.*/
+            tags:
+              only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
+        type: approval
       - orb-tools/dev-promote-prod-from-git-tag:
           add-pr-comment: false
           filters:
             branches:
-              only:
-                - master
-            tags:
-              only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
+              ignore: /.*/
+              tags:
+                only: /^(major|minor|patch)-release-v\d+\.\d+\.\d+$/
           orb-name: coryzibell/cloudflare-wrangler
           requires:
-            - orb-tools/lint
-            - orb-tools/pack
+            - hold-for-approval
