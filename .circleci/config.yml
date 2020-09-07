@@ -1,7 +1,6 @@
 version: '2.1'
 orbs:
   orb-tools: circleci/orb-tools@10
-  your-orb: coryzibell/cloudflare-wrangler@<<pipeline.parameters.dev-orb-version>>
 workflows:
   deploy:
     jobs:
@@ -11,9 +10,8 @@ workflows:
           filters:
             branches:
               only: master
-          orb-name: your-namespace/your-orb
+          orb-name: coryzibell/cloudflare-wrangler
           publish-version-tag: false
-    when: << pipeline.parameters.run-integration-tests >>
   pack:
     jobs:
       - orb-tools/lint
@@ -25,7 +23,3 @@ workflows:
             - orb-tools/lint
             - orb-tools/shellcheck
             - orb-tools/pack
-      - orb-tools/trigger-integration-tests-workflow:
-          name: trigger-integration-dev
-          requires:
-            - orb-tools/publish-dev

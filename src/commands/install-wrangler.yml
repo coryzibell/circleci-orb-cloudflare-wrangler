@@ -2,7 +2,7 @@ description: >
   Installs cloudflare wrangler
 
 steps:
-  run:
-    name: Install wrangler
-    command: >
-      npm i @cloudflare/wrangler -g
+  - run:
+      name: Install wrangler
+      command: >
+        npm i @cloudflare/wrangler -g

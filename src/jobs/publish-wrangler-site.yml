@@ -11,7 +11,7 @@ parameters:
   checkout:
     type: boolean
     default: true
-    desceription: >
+    description: >
       Whether or not to check out the circleci checkout step.
       Default is true
 
@@ -24,4 +24,4 @@ steps:
   - install-wrangler
 
   - publish-wrangler-site:
-      environment: <<parameters.environment>>
+      environment: << parameters.environment >>

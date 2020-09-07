@@ -4,10 +4,25 @@ description: >
 parameters:
   environment:
     type: string
+    default: ""
     description: >
       The environment to publish the site under. Will be passed to wrangler as --env.
       Needs to be specified in wrangler.toml
 
 steps:
-  run:
-    name: Publish wrangler site
+  - when:
+      condition:
+        equal: [ "", << parameters.environment >> ]
+      steps:
+        - run:
+            name: Publish wrangler site without environment
+            command: |
+              wrangler publish
+  - unless:
+      condition:
+        equal: [ "", << parameters.environment >> ]
+      steps:
+        - run:
+            name: Publish wrangler site with environment
+            command: |
+              wrangler publish --env << parameters.environment >>
