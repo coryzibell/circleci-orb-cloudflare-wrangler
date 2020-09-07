@@ -1,0 +1,13 @@
+description: >
+  Publishes a cloudflare wrangler site
+
+parameters:
+  environment:
+    type: string
+    description: >
+      The environment to publish the site under. Will be passed to wrangler as --env.
+      Needs to be specified in wrangler.toml
+
+steps:
+  run:
+    name: Publish wrangler site

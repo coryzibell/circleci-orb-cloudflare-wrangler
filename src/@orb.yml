@@ -1,4 +1,10 @@
-version: 1.0.0
+version: 2.1
 
 description: |
   An orb to work with Cloudflare sites using Cloudflare's wrangler tool.
+
+display:
+  source_url: https://github.com/coryzibell/circleci-orb-cloudflare-wrangler
+
+orbs:
+  node: circleci/node@4.0.0

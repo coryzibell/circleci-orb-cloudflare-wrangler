@@ -1,0 +1,27 @@
+description: >
+  Publish a wrangler site, specifying the environment.
+
+executor: node/default
+
+parameters:
+  environment:
+    type: string
+    description: >
+      The custom environment to pass to wrangler (which will be picked up in wrangler.toml
+  checkout:
+    type: boolean
+    default: true
+    desceription: >
+      Whether or not to check out the circleci checkout step.
+      Default is true
+
+steps:
+  - when:
+      condition: <<parameters.checkout>>
+      steps:
+        - checkout
+
+  - install-wrangler
+
+  - publish-wrangler-site:
+      environment: <<parameters.environment>>
