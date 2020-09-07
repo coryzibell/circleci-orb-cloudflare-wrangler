@@ -14,30 +14,14 @@ steps:
         equal: [ "", << parameters.environment >> ]
       steps:
         - run:
-            name: Install yarn
+            name: Publish wrangler site without environment
             command: |
-              npm i -g yarn
-        - run:
-            name: Install wrangler
-            command: |
-              yarn global add @cloudflare/wrangler
-        - run:
-            name: Publish site
-            command: |
-              wrangler publish
+              npx @cloudflare/wrangler publish
   - unless:
       condition:
         equal: [ "", << parameters.environment >> ]
       steps:
         - run:
-            name: Install yarn
+            name: Publish wrangler site with environment
             command: |
-              npm i -g yarn
-        - run:
-            name: Install wrangler
-            command: |
-              yarn global add @cloudflare/wrangler
-        - run:
-            name: Publish Site
-            command: |
-              wrangler publish --env << parameters.environment >>
+              npx @cloudflare/wrangler publish --env << parameters.environment >>
