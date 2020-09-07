@@ -22,7 +22,5 @@ steps:
       steps:
         - checkout
 
-  - install-wrangler
-
   - publish-wrangler-site:
       environment: << parameters.environment >>

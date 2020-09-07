@@ -1,8 +1,0 @@
-description: >
-  Installs cloudflare wrangler
-
-steps:
-  - run:
-      name: Install wrangler
-      command: >
-        sudo npm i @cloudflare/wrangler -g
