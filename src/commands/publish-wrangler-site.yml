@@ -16,7 +16,7 @@ steps:
         - run:
             name: Publish wrangler site without environment
             command: |
-              wrangler publish
+              npx @cloudflare/wrangler publish
   - unless:
       condition:
         equal: [ "", << parameters.environment >> ]
@@ -24,4 +24,4 @@ steps:
         - run:
             name: Publish wrangler site with environment
             command: |
-              wrangler publish --env << parameters.environment >>
+              npx @cloudflare/wrangler publish --env << parameters.environment >>
