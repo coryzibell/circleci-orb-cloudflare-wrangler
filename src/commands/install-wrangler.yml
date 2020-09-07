@@ -5,4 +5,4 @@ steps:
   - run:
       name: Install wrangler
       command: >
-        npm i @cloudflare/wrangler -g
+        sudo npm i @cloudflare/wrangler -g
