@@ -15,17 +15,8 @@ workflows:
   pack:
     jobs:
       - orb-tools/lint:
-          filters:
-            branches:
-              only: develop
       - orb-tools/pack:
-          filters:
-            branches:
-              only: develop
       - orb-tools/publish-dev:
-          filters:
-            branches:
-              ignore: master
           orb-name: coryzibell/cloudflare-wrangler
           alpha-version-ref: dev:<< pipeline.git.branch >>
           requires:
