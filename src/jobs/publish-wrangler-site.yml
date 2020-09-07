@@ -15,8 +15,24 @@ parameters:
     description: >
       Whether or not to check out the circleci checkout step.
       Default is true
+  attach-workspace:
+    type: boolean
+    default: false
+    description: >
+      Whether or not a workspace should be attached to the job
+  workspace-path:
+    type: string
+    default: "."
+    description: >
+      The absolute or relative path to attach to
 
 steps:
+  - when:
+      condition: << parameters.attach-workspace >>
+      steps:
+        - attach_workspace:
+            at: << parameters.workspace-path >>
+
   - when:
       condition: <<parameters.checkout>>
       steps:
